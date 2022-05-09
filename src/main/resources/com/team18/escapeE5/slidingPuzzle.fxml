@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.team18.escapeE5.SlidingPuzzleController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team18.escapeE5.SlidingPuzzleController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label text="數字華榮道" />
+    <GridPane fx:id="gridPane" gridLinesVisible="true">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="4" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="5" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="6" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="7" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="8" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="9" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="11" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="12" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="13" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="14" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Button onAction="#move" prefHeight="50.0" prefWidth="50.0" text="15" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+    </GridPane>
 </VBox>

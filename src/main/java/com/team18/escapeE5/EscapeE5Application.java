@@ -22,7 +22,7 @@ public class EscapeE5Application extends Application {
         miniGameScene = new Scene(fxmlLoader3.load());
         stage = primaryStage;
         stage.setTitle("逃離工五之施北北叫我寫作業");
-        stage.setScene(menuScene);
+        stage.setScene(miniGameScene);
         stage.show();
     }
 
