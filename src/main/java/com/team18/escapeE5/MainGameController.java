@@ -1,9 +1,9 @@
-package com.team18.escapee5;
+package com.team18.escapeE5;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class MainGameController {
     @FXML
     private Label welcomeText;
 
