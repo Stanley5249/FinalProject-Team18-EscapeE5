@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team18.escapeE5.SlidePuzzleController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Label text="數字華榮道" />
+    <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints valignment="CENTER" prefHeight="50.0" />
+            <RowConstraints valignment="CENTER" prefHeight="50.0" />
+            <RowConstraints valignment="CENTER" prefHeight="50.0" />
+            <RowConstraints valignment="CENTER" prefHeight="50.0" />
+        </rowConstraints>
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="1" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="2" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="3" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="4" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="5" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="6" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="7" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="8" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="9" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="10" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="11" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="12" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="13" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="14" />
+        <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="15" />
+        <Button fx:id="lastButton" layoutX="111.0" layoutY="161.0" onAction="#initialize" prefHeight="50.0" prefWidth="50.0" text="16" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+    </GridPane>
+</VBox>
