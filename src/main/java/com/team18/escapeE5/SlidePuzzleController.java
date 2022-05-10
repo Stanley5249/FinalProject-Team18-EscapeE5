@@ -18,21 +18,36 @@ public class SlidePuzzleController {
     private int colSize;
     private int rowSize;
     private int gridSize;
+    private int click;
 
     @FXML
     protected void slideTiles(Event event) {
         if (running) {
             Button button = (Button) event.getTarget();
             System.out.printf("%-3s", button.getText());
-            if (slideTo(button, 0, -1)) System.out.println("Up");
-            else if (slideTo(button, 0, 1)) System.out.println("Down");
-            else if (slideTo(button, -1, 0)) System.out.println("Left");
-            else if (slideTo(button, 1, 0)) System.out.println("Right");
-            else System.out.println("False");
+            click++;
+            if (slideTo(button, 0, -1)) {
+                click++;
+                System.out.println("Up");
+            }
+            else if (slideTo(button, 0, 1)) {
+                click++;
+                System.out.println("Down");
+            }
+            else if (slideTo(button, -1, 0)) {
+                click++;
+                System.out.println("Left");
+            }
+            else if (slideTo(button, 1, 0)) {
+                click++;
+                System.out.println("Right");
+            }
+            else System.out.println("Can't move");
 
             if (isComplete()) {
                 lastButton.setVisible(true);
                 System.out.println("Congratulations!");
+                System.out.printf("The number of clicks: %s\n", click);
                 running = false;
             }
         }
@@ -83,6 +98,7 @@ public class SlidePuzzleController {
         rowSize = gridPane.getRowCount();
         gridSize = gridPane.getChildren().size() - 1;
         lastButton.setVisible(false);
+        click = 0;
 
         System.out.println("-------------Initialize--------------");
 
