@@ -163,9 +163,9 @@ public class SlidePuzzleController {
     }
 
     private void showArray(int[] array) {
-        StringBuilder s = new StringBuilder();
-        for (int i : array) s.append(i+1).append(" ");
-        s.deleteCharAt(s.length() - 1);
-        System.out.println(s);
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%-4s", array[i] + 1);
+            if ((i + 1) % colSize == 0) System.out.println();
+        }
     }
 }

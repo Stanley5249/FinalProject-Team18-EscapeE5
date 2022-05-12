@@ -8,7 +8,7 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Label text="數字華榮道" />
+    <Label text="數字華容道" />
     <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true">
         <columnConstraints>
             <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
@@ -17,10 +17,10 @@
             <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints valignment="CENTER" prefHeight="50.0" />
-            <RowConstraints valignment="CENTER" prefHeight="50.0" />
-            <RowConstraints valignment="CENTER" prefHeight="50.0" />
-            <RowConstraints valignment="CENTER" prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" valignment="CENTER" />
+            <RowConstraints prefHeight="50.0" valignment="CENTER" />
+            <RowConstraints prefHeight="50.0" valignment="CENTER" />
+            <RowConstraints prefHeight="50.0" valignment="CENTER" />
         </rowConstraints>
         <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="1" />
         <Button focusTraversable="false" onAction="#slideTiles" prefHeight="50.0" prefWidth="50.0" text="2" />
