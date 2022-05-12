@@ -24,6 +24,8 @@ public class EscapeE5Application extends Application {
         stage.setTitle("逃離工五之施北北叫我寫作業");
         stage.setScene(miniGameScene);
         stage.show();
+
+        miniGameScene.getRoot().requestFocus();
     }
 
     public static void main(String[] args) {
