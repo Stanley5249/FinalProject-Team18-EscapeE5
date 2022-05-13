@@ -3,12 +3,20 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" onKeyPressed="#onKeyPressed" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team18.escapeE5.SlidePuzzleController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Label text="數字華容道" />
+    <Label contentDisplay="BOTTOM" text="數字華容道">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+      <graphic>
+         <Label fx:id="timerLabel" text="00m00s" />
+      </graphic>
+   </Label>
     <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true">
         <columnConstraints>
             <ColumnConstraints halignment="CENTER" prefWidth="50.0" />
@@ -37,6 +45,6 @@
         <Button focusTraversable="false" onAction="#onButtonClick" prefHeight="50.0" prefWidth="50.0" text="13" />
         <Button focusTraversable="false" onAction="#onButtonClick" prefHeight="50.0" prefWidth="50.0" text="14" />
         <Button focusTraversable="false" onAction="#onButtonClick" prefHeight="50.0" prefWidth="50.0" text="15" />
-        <Button focusTraversable="false" fx:id="bt16" prefHeight="50.0" prefWidth="50.0" text="16" visible="false" />
+        <Button fx:id="bt16" focusTraversable="false" prefHeight="50.0" prefWidth="50.0" text="16" visible="false" />
     </GridPane>
 </VBox>

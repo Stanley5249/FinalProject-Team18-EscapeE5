@@ -5,13 +5,16 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 import java.util.Random;
 
-public class SlidePuzzleController {
+public class SlidePuzzleController extends AnimationTimer {
+    @FXML
+    private Label timerLabel;
     @FXML
     private GridPane gridPane;
     @FXML
@@ -23,17 +26,25 @@ public class SlidePuzzleController {
     private int gridSize;
     private int empty;
     private int click;
-    private int timer;
-    public AnimationTimer animationTimer = new AnimationTimer() {
-        private long temp;
-        @Override
-        public void handle(long now) {
-            if (now - temp > 1000000000L) {
-                timer++;
-                temp = now;
-            }
+
+    private long animationStart;
+    private int animationDuration;
+    private boolean resetScheduled;
+    @Override
+    public void handle(long now) {
+        if (resetScheduled) {
+            animationStart = now;
+            resetScheduled = false;
         }
-    };
+        animationDuration = (int) ((now - animationStart) / 1e9);
+        timerLabel.setText(showTimer());
+    }
+
+    private String showTimer() {
+        int min = animationDuration / 60;
+        int sec = animationDuration % 60;
+        return String.format("%02dm%02ds", min, sec);
+    }
 
     @FXML
     protected void initialize() {
@@ -49,25 +60,24 @@ public class SlidePuzzleController {
     @FXML
     protected void onButtonClick(Event event) {
         if (running) {
+            start();
             Button button = (Button) event.getTarget();
-            System.out.printf("%-3s", button.getText());
             if (moveTo(button, 0, -1)) {
                 click++;
-                System.out.println("Up");
+                System.out.printf("%-3sUp\n", button.getText());
             }
             else if (moveTo(button, 0, 1)) {
                 click++;
-                System.out.println("Down");
+                System.out.printf("%-3sDown\n", button.getText());
             }
             else if (moveTo(button, -1, 0)) {
                 click++;
-                System.out.println("Left");
+                System.out.printf("%-3sLeft\n", button.getText());
             }
             else if (moveTo(button, 1, 0)) {
                 click++;
-                System.out.println("Right");
+                System.out.printf("%-3sRight\n", button.getText());
             }
-            else System.out.println("Invalid");
             puzzleCompletedTest();
         }
     }
@@ -75,46 +85,51 @@ public class SlidePuzzleController {
     @FXML
     protected void onKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.SPACE) reset();
-        else if (keyEvent.getCode() == KeyCode.T) System.out.println(timer());
-        else {
+        else if (running) {
             int col = empty % colSize;
             int row = empty / colSize;
             if (keyEvent.getCode() == KeyCode.W || keyEvent.getCode() == KeyCode.UP) {
+                start();
                 Node node = getNodeFromGrid(col, row + 1);
-                if (node != null && moveTo(node, 0, -1)) {
+                if (moveTo(node, 0, -1)) {
                     click++;
                     System.out.printf("%-3sUp\n", ((Button) node).getText());
+                    puzzleCompletedTest();
                 }
-                else System.out.println("X  Invalid");
             }
             else if (keyEvent.getCode() == KeyCode.S || keyEvent.getCode() == KeyCode.DOWN) {
+                start();
                 Node node = getNodeFromGrid(col, row - 1);
-                if (node != null && moveTo(node, 0, 1)) {
+                if (moveTo(node, 0, 1)) {
                     click++;
                     System.out.printf("%-3sDown\n", ((Button) node).getText());
+                    puzzleCompletedTest();
                 }
-                else System.out.println("X  Invalid");
             }
             else if (keyEvent.getCode() == KeyCode.A || keyEvent.getCode() == KeyCode.LEFT) {
+                start();
                 Node node = getNodeFromGrid(col + 1, row);
-                if (node != null && moveTo(node, -1, 0)) {
+                if (moveTo(node, -1, 0)) {
                     click++;
                     System.out.printf("%-3sLeft\n", ((Button) node).getText());
+                    puzzleCompletedTest();
                 }
-                else System.out.println("X  Invalid");
             }
             else if (keyEvent.getCode() == KeyCode.D || keyEvent.getCode() == KeyCode.RIGHT) {
+                start();
                 Node node = getNodeFromGrid(col - 1, row);
-                if (node != null && moveTo(node, 1, 0)) {
+                if (moveTo(node, 1, 0)) {
                     click++;
                     System.out.printf("%-3sRight\n", ((Button) node).getText());
+                    puzzleCompletedTest();
                 }
-                else System.out.println("X  Invalid");
             }
         }
     }
 
     private boolean moveTo(Node target, int dx, int dy) {
+        if (target == null) return false;
+
         int col = GridPane.getColumnIndex(target);
         int row = GridPane.getRowIndex(target);
 
@@ -159,13 +174,13 @@ public class SlidePuzzleController {
                 row++;
             }
         }
-        animationTimer.stop();
+        stop();
         running = false;
         bt16.setVisible(true);
         System.out.println("Congratulations!");
         System.out.println("--------Statistics--------");
         System.out.printf("The number of clicks: %s\n", click);
-        System.out.printf("Time spent: %s\n", timer());
+        System.out.printf("Time spent: %s\n", showTimer());
     }
 
     private void showPuzzle(int[] puzzle) {
@@ -176,19 +191,18 @@ public class SlidePuzzleController {
         }
     }
 
-    private String timer() {
-        return String.format("%02dm%02ds", timer / 60, timer % 60);
-    }
-
     @FXML
     private void reset() {
+        stop();
+
         System.out.println("--------Initialize--------");
 
         // Reset variables
         running = true;
         bt16.setVisible(false);
         click = 0;
-        timer = 0;
+        resetScheduled = true;
+        timerLabel.setText("00m00s");
 
         // Generate sorted array
         int[] puzzle = new int[gridSize];
@@ -249,7 +263,5 @@ public class SlidePuzzleController {
             GridPane.setRowIndex(node, i / colSize);
         }
         System.out.println("----------Finish----------");
-
-        animationTimer.start();
     }
 }
