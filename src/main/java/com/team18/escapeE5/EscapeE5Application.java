@@ -16,7 +16,7 @@ public class EscapeE5Application extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader1 = new FXMLLoader(EscapeE5Application.class.getResource("menu.fxml"));
         FXMLLoader fxmlLoader2 = new FXMLLoader(EscapeE5Application.class.getResource("mainGame.fxml"));
-        FXMLLoader fxmlLoader3 = new FXMLLoader(EscapeE5Application.class.getResource("slidePuzzle.fxml"));
+        FXMLLoader fxmlLoader3 = new FXMLLoader(EscapeE5Application.class.getResource("football.fxml"));
         menuScene = new Scene(fxmlLoader1.load());
         mainGameScene = new Scene(fxmlLoader2.load());
         miniGameScene = new Scene(fxmlLoader3.load());
