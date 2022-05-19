@@ -5,11 +5,16 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane onKeyPressed="#onKeyPressed" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team18.escapeE5.footballController">
+<Pane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team18.escapeE5.footballController">
     <Label layoutX="96.0" layoutY="14.0" text="踢足球">
         <font>
             <Font name="System Bold" size="36.0" />
         </font>
     </Label>
-    <Circle fx:id="ball" layoutX="150.0" layoutY="336.0" radius="50.0" />
+    <Label fx:id="score" alignment="CENTER" layoutX="50.0" layoutY="117.0" prefHeight="83.0" prefWidth="200.0" text="0" textFill="#00000040">
+        <font>
+            <Font name="System Bold" size="64.0" />
+        </font>
+    </Label>
+   <Circle fx:id="ball" layoutX="150.0" layoutY="336.0" radius="50.0" />
 </Pane>
